@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CoffeShopTest</string>
+    <string name="email_caption">e-mail</string>
+    <string name="password_caption">Пароль</string>
+    <string name="login_caption">Войти</string>
+    <string name="registration_caption">Регистрация</string>
+    <string name="password_repeat_caption">Повторите пароль</string>
+</resources>
