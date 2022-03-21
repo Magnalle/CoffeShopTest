@@ -5,4 +5,7 @@
     <string name="login_caption">Войти</string>
     <string name="registration_caption">Регистрация</string>
     <string name="password_repeat_caption">Повторите пароль</string>
+    <string name="basket_caption">Перейти к оплате</string>
+    <string name="waiting_notice">Время ожидания заказа \n15 минут! \nСпасибо, что выбрали нас!</string>
+    <string name="show_on_map_caption">Посмотреть на карте</string>
 </resources>

@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/login_fragment">
 
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="magnalleexample.coffeshoptest.ui.login.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registration_fragment" />
+        <action
+            android:id="@+id/action_login_fragment_to_coffeeShopsListFragment"
+            app:destination="@id/coffeeShopsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registration_fragment"
+        android:name="magnalleexample.coffeshoptest.ui.registration.RegistrationFragment"
+        android:label="RegistrationFragment" >
+        <action
+            android:id="@+id/action_registration_fragment_to_coffeeShopsListFragment"
+            app:destination="@id/coffeeShopsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coffeeShopsListFragment"
+        android:name="magnalleexample.coffeshoptest.ui.coffeeShopsList.CoffeeShopsListFragment"
+        android:label="CoffeeShopsListFragment" >
+        <action
+            android:id="@+id/action_coffeeShopsListFragment_to_menu_fragment"
+            app:destination="@id/menu_fragment" />
+        <action
+            android:id="@+id/action_coffeeShopsListFragment_to_login_fragment"
+            app:destination="@id/login_fragment" />
+        <action
+            android:id="@+id/action_coffeeShopsListFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menu_fragment"
+        android:name="magnalleexample.coffeshoptest.ui.menu.MenuFragment"
+        android:label="MenuFragment" >
+        <argument
+            android:name="coffeeShopData"
+            app:argType="magnalleexample.coffeshoptest.domain.CoffeeShopData" />
+        <action
+            android:id="@+id/action_menu_fragment_to_basket_fragment"
+            app:destination="@id/basket_fragment" />
+        <action
+            android:id="@+id/action_menu_fragment_to_login_fragment"
+            app:destination="@id/login_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/basket_fragment"
+        android:name="magnalleexample.coffeshoptest.ui.basket.BasketFragment"
+        android:label="BasketFragment" >
+        <argument
+        android:name="coffeeShopData"
+        app:argType="magnalleexample.coffeshoptest.domain.CoffeeShopData" />
+        <action
+            android:id="@+id/action_basket_fragment_to_login_fragment"
+            app:destination="@id/login_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="magnalleexample.coffeshoptest.ui.map.MapFragment"
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_menu_fragment"
+            app:destination="@id/menu_fragment" />
+    </fragment>
 </navigation>

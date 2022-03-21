@@ -2,17 +2,31 @@ package magnalleexample.coffeshoptest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import magnalleexample.coffeshoptest.databinding.MainActivityBinding
 import magnalleexample.coffeshoptest.ui.login.LoginFragment
+import android.R
+import androidx.navigation.Navigation
+import com.yandex.mapkit.MapKitFactory
+import com.yandex.mapkit.geometry.Point
+import com.yandex.mapkit.map.CameraPosition
+import com.yandex.mapkit.mapview.MapView
+
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, LoginFragment.newInstance())
-                .commitNow()
-        }
+
+        val binding = MainActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val api_key = "23d1f436-89f0-46cd-adef-62795ac28e04"
+
+        MapKitFactory.setApiKey(api_key)
+        MapKitFactory.initialize(this)
     }
+
 }
