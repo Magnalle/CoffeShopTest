@@ -5,7 +5,8 @@ import java.io.Serializable
 data class CoffeeShopData(
     val id: Long,
     val name: String,
-    val point : Point
+    val point : Point,
+    var dist : Double = 0.0
 ) : Serializable
 
 data class Point(

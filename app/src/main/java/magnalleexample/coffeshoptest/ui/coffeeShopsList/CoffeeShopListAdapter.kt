@@ -17,7 +17,6 @@ class CoffeeShopListAdapter(private val clickListener : CoffeeShopDataClickListe
         override fun areContentsTheSame(oldItem: CoffeeShopData, newItem: CoffeeShopData): Boolean {
             return oldItem.id == newItem.id
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -43,6 +42,11 @@ class CoffeeShopListAdapter(private val clickListener : CoffeeShopDataClickListe
         }
         fun bind(data: CoffeeShopData, clickListener : CoffeeShopDataClickListener){
             binding.coffeeShopNameTextView.text = data.name
+            if(data.dist < 0.001)
+                binding.coffeeShopDistanceTextView.text = ""
+            else {
+                binding.coffeeShopDistanceTextView.text = "в ${(data.dist / 1000).toInt().toString()} км ${(data.dist - (data.dist / 1000).toInt() * 1000.0).toInt()} м от Вас"
+            }
             binding.coffeeShopCardView.setOnClickListener{
                 clickListener.onClick(data)
             }

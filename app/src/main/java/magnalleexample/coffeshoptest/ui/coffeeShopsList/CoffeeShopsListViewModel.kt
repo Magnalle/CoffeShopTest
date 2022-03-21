@@ -1,6 +1,7 @@
 package magnalleexample.coffeshoptest.ui.coffeeShopsList
 
 import android.app.Application
+import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,6 +28,7 @@ class CoffeeShopsListViewModel(app: Application) : BaseViewModel(app) {
     val navigateToLogin : LiveData<Boolean>
         get() = _navigateToLogin
 
+    val location : MutableLiveData<Location?> = MutableLiveData(null)
 
     fun loadData(){
         scope.launch(Dispatchers.IO) {
@@ -38,6 +40,7 @@ class CoffeeShopsListViewModel(app: Application) : BaseViewModel(app) {
                     token,
                     {
                         getApplication<App>().coffeeShopsList = it
+                        location.value?.let { updateDistance() }
                         _updateCoffeeShopsList.postValue(true)
                     },
                     { error, needToLogin ->
@@ -91,4 +94,17 @@ class CoffeeShopsListViewModel(app: Application) : BaseViewModel(app) {
     fun coffeeShopsListLoaded(){
         _updateCoffeeShopsList.postValue(false)
     }
+
+    fun updateDistance(){
+        location.value?.let {
+            for(shop in getApplication<App>().coffeeShopsList){
+                val loc = Location("")
+                loc.latitude = shop.point.latitude
+                loc.longitude = shop.point.longitude
+                shop.dist = it.distanceTo(loc).toDouble()
+            }
+            _updateCoffeeShopsList.postValue(true)
+        }
+    }
+
 }
