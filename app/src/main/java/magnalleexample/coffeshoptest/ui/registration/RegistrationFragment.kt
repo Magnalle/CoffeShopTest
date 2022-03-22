@@ -36,8 +36,6 @@ class RegistrationFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Регистрация"
         viewModel = ViewModelProvider(this).get(RegistrationViewModel::class.java)
 
-        binding.lifecycleOwner = this
-
         binding.registrationButton.setOnClickListener {
             viewModel.register(
                 binding.emailEditText.text.toString(),

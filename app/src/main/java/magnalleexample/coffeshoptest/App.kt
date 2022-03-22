@@ -18,6 +18,7 @@ class App : Application() {
     var menuList : List<CoffeeShopMenuItem> = listOf()
     var lastCoffeeShop : CoffeeShopData? = null
     var coffeeShopsList : List<CoffeeShopData> = listOf()
+    var apiKeySet : Boolean = false
 }
 
 val Context.app

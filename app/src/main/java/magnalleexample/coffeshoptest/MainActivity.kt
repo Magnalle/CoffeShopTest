@@ -23,10 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         val binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val api_key = "23d1f436-89f0-46cd-adef-62795ac28e04"
-
-        MapKitFactory.setApiKey(api_key)
-        MapKitFactory.initialize(this)
     }
 
 }

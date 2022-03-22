@@ -39,8 +39,6 @@ class LoginFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
-        binding.lifecycleOwner = this
-
         binding.loginButton.setOnClickListener {
             viewModel.login(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString())
         }

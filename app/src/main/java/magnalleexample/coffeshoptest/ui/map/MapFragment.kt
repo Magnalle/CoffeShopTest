@@ -107,17 +107,31 @@ class MapFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val api_key = "23d1f436-89f0-46cd-adef-62795ac28e04"
+        if(!requireActivity().application.app.apiKeySet)
+            MapKitFactory.setApiKey(api_key)
+        requireActivity().application.app.apiKeySet = true
+        MapKitFactory.initialize(requireContext())
+    }
+
     override fun onStop() {
         // Вызов onStop нужно передавать инстансам MapView и MapKit.
+        binding.mapview.map.mapObjects.clear()
         binding.mapview.onStop()
         MapKitFactory.getInstance().onStop()
         super.onStop()
     }
 
-    override fun onStart() {
-        // Вызов onStart нужно передавать инстансам MapView и MapKit.
+    override fun onResume() {
+        super.onResume()
         binding.mapview.onStart()
+        MapKitFactory.getInstance().onStart()
+    }
+    override fun onStart() {
         super.onStart()
+        binding.mapview.onStart()
         MapKitFactory.getInstance().onStart()
     }
 
