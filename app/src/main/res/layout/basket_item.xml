@@ -72,7 +72,7 @@
                 android:text="-"
                 android:textAlignment="center"
                 android:textColor="#846340"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/v_guideline"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -102,7 +102,7 @@
                 android:textColor="#846340"
                 android:clickable="true"
                 android:focusable="true"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

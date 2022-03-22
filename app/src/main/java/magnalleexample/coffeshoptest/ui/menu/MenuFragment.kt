@@ -33,8 +33,8 @@ class MenuFragment : Fragment() {
         val binding : MenuFragmentBinding= DataBindingUtil.inflate(
             inflater, R.layout.menu_fragment, container, false
         )
-        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Меню"
         val arguments = MenuFragmentArgs.fromBundle(requireArguments())
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Меню ${arguments.coffeeShopData.name}"
 
         val menuListAdapter = MenuListAdapter()
 

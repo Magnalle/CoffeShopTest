@@ -7,27 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.DataBindingUtil.findBinding
-import androidx.databinding.DataBindingUtil.setContentView
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
-import androidx.viewbinding.ViewBindings
 import com.yandex.mapkit.Animation
-
-import com.yandex.mapkit.mapview.MapView
 
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.*
-import com.yandex.runtime.image.ImageProvider
 import com.yandex.runtime.ui_view.ViewProvider
-import kotlinx.android.synthetic.main.map_fragment.*
-import magnalleexample.coffeshoptest.R
+import kotlinx.android.synthetic.main.placemark.view.*
 import magnalleexample.coffeshoptest.app
 import magnalleexample.coffeshoptest.databinding.MapFragmentBinding
 import magnalleexample.coffeshoptest.domain.CoffeeShopData
-import magnalleexample.coffeshoptest.ui.coffeeShopsList.CoffeeShopsListFragmentDirections
 
 
 class MapFragment : Fragment() {
@@ -56,8 +47,8 @@ class MapFragment : Fragment() {
                 false
             }
         init {
-            val view = View(requireContext()).apply {
-                background = requireContext().getDrawable(R.drawable.placemark)
+            val view = PlacemarkView(requireContext()).apply {
+                this.placemark_name_text_view.text = coffeeShopData.name
             }
             mapObject.setView(ViewProvider(view))
             mapObject.addTapListener(clickListener)
@@ -70,8 +61,8 @@ class MapFragment : Fragment() {
     ): View? {
 
         viewModel = ViewModelProvider(this).get(MapViewModel::class.java)
-
         val application = requireNotNull(this.activity).application
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Карта"
 
         if(!application.app.coffeeShopsList.isEmpty()) {
             binding.mapview.getMap().move(
