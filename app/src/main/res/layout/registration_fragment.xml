@@ -86,12 +86,6 @@
             app:layout_constraintVertical_chainStyle="packed"
             style="@style/button" />
 
-        <magnalleexample.coffeshoptest.ui.map.PlacemarkView
-            android:layout_width="409dp"
-            android:layout_height="188dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:placemarkName="1234" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
